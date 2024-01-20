@@ -1,0 +1,43 @@
+appId: com.electron.app
+appImage:
+  artifactName: ${name}-${version}.${ext}
+asarUnpack:
+  - resources/**
+directories:
+  buildResources: build
+dmg:
+  artifactName: ${name}-${version}.${ext}
+files:
+  - '!**/.vscode/*'
+  - '!src/*'
+  - '!electron.vite.config.{js,ts,mjs,cjs}'
+  - '!{.eslintignore,.eslintrc.cjs,.prettierignore,.prettierrc.yaml,dev-app-update.yml,CHANGELOG.md,README.md}'
+  - '!{.env,.env.*,.npmrc,pnpm-lock.yaml}'
+  - '!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}'
+linux:
+  category: Utility
+  maintainer: electronjs.org
+  target:
+    - AppImage
+    - snap
+    - deb
+mac:
+  entitlementsInherit: build/entitlements.mac.plist
+  extendInfo:
+    - NSCameraUsageDescription: Application requests access to the device's camera.
+    - NSMicrophoneUsageDescription: Application requests access to the device's microphone.
+    - NSDocumentsFolderUsageDescription: Application requests access to the user's Documents folder.
+    - NSDownloadsFolderUsageDescription: Application requests access to the user's Downloads folder.
+  notarize: false
+npmRebuild: false
+nsis:
+  artifactName: ${name}-${version}-setup.${ext}
+  createDesktopShortcut: always
+  shortcutName: ${productName}
+  uninstallDisplayName: ${productName}
+productName: my-spotify-player
+publish:
+  provider: generic
+  url: https://example.com/auto-updates
+win:
+  executableName: my-spotify-player

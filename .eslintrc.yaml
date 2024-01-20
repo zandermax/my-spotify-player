@@ -1,0 +1,44 @@
+extends: canonical/auto
+ignorePatterns:
+  - 'out/**/*'
+overrides:
+  - extends: canonical/yaml
+    files: '*.{yml,yaml}'
+    rules:
+      indent:
+        - error
+        - 2
+      yml/quotes:
+        - error
+        - prefer: single
+  - extends: 'plugin:markdown/recommended'
+    files: '*.md'
+plugins:
+  - markdown
+rules:
+  import/no-unassigned-import:
+    - error
+    - allow:
+        - '**/*.css'
+        - '**/*.scss'
+  indent:
+    - error
+    - tab
+  jsonc/array-bracket-newline:
+    - error
+    - consistent
+  jsonc/array-element-newline:
+    - error
+    - consistent
+  jsonc/comma-dangle:
+    - off
+  jsonc/indent:
+    - error
+    - tab
+  jsonc/object-curly-spacing:
+    - error
+    - always
+  prettier/prettier:
+    - error
+    - singleQuote: true
+      useTabs: true

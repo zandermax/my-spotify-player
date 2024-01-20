@@ -1,0 +1,3 @@
+provider: generic
+updaterCacheDirName: my-spotify-player-updater
+url: https://example.com/auto-updates
